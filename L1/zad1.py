@@ -22,5 +22,5 @@ if __name__ == "__main__":
     # will return false, due to limitations of floating-point arithmetics
     print(vat_faktura(zakupy) == vat_paragon(zakupy))
 
-    # will return true, higher precision comes with less speed
+    # will return true
     print(vat_faktura_dec(zakupy) == vat_paragon_dec(zakupy))
