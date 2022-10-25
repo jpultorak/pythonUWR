@@ -1,8 +1,4 @@
 # returns floor(sqrt(n))
-
-from cmath import sqrt
-
-
 def sqroot_approx(n):
     res, i  = 0, 0
     while res <= n:
