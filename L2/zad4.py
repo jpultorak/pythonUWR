@@ -1,5 +1,5 @@
 from random import seed, sample
-# program
+
 seed()
 special_ch = ['.', ',', '!', '?', ';', '\\', ':', '|', '\"', '/']
 
@@ -9,8 +9,7 @@ def pick_n(a, n):
 
     return [a[id] for id in sorted(index)]
 
-# count world length excluding some special characters
-
+# count world length excluding some special characters 
 def word_length (w):
     return sum(1 for letter in w if letter not in special_ch)
 
@@ -18,7 +17,6 @@ def simplyfy_text(text, maxL, maxW):
 
     a = list(filter(lambda x: len(x) <= maxL, text.split()))
     n = len(a)
-    print(a)
     if n <= maxW:
         return(a)
     else:
@@ -28,13 +26,9 @@ if __name__ == "__main__":
     text = '"Podział peryklinalny inicjałów wrzecionowatych \
     kambium charakteryzuje się ścianą podziałową inicjowaną \
     w płaszczyźnie maksymalnej."'
-
-    text2 = 'a.'
     
-    print(word_length('a'))
-    print(word_length('a.?'))
-    print(word_length('a/.?'))
-    print(word_length('!kotpłot!'))
-
-    print(simplyfy_text(text, 10, 5))
-    print(simplyfy_text(text2, 2, 1))
+    # https://wolnelektury.pl/media/book/txt/pan-tadeusz.txt
+    """ with open('pan-tadeusz.txt', 'r', encoding="utf-8") as original, open('pan-tadeusz-simplified.txt', 'w', encoding="utf-8") as simplified:
+        data = original.read()
+        simplified.write(simplyfy_text(data, 15, 60000)) """
+    print(simplyfy_text(text2, 20, 20))
