@@ -28,7 +28,8 @@ if __name__ == "__main__":
     w płaszczyźnie maksymalnej."'
     
     # https://wolnelektury.pl/media/book/txt/pan-tadeusz.txt
-    """ with open('pan-tadeusz.txt', 'r', encoding="utf-8") as original, open('pan-tadeusz-simplified.txt', 'w', encoding="utf-8") as simplified:
+    with open('pan-tadeusz.txt', 'r', encoding="utf-8") as original, open('pan-tadeusz-simplified.txt', 'w', encoding="utf-8") as simplified:
         data = original.read()
-        simplified.write(simplyfy_text(data, 15, 60000)) """
-    print(simplyfy_text(text2, 20, 20))
+        simplified.write(simplyfy_text(data, 15, 60000))
+        
+    print(simplyfy_text(text, 10, 5))
