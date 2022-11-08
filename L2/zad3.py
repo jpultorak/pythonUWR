@@ -1,6 +1,6 @@
-from itertools import product
+from functools import lru_cache
 from tableprint import tabliczka
-import sys
+from sys import setrecursionlimit
 
 def sudan(n, x, y):
     if n == 0:
@@ -25,10 +25,19 @@ def sudan_mem2(n, x, y):
     memo[(n, x, y)] = sudan_mem2(n-1, sudan_mem2(n, x, y-1), sudan_mem2(n, x, y-1) + y)
     return memo[(n, x, y)]
 
+@lru_cache
+def sudan3(n, x, y):
+    if n == 0:
+        return x+y
+    if y == 0:
+        return x
+    
+    return sudan(n-1, sudan(n, x, y-1), sudan(n, x, y-1) + y)
 
 if __name__ == "__main__":
 
-    sys.setrecursionlimit(5000)
+    setrecursionlimit(5000)
+
     # Dla n = 0 będzie działało bardzo szybko [ O(n*m) ] niezależnie od wersji, bo sprowadza się do dodawania x+y
     tabliczka(1, 10, 1, 10, lambda x, y : sudan(0, x, y))
 
@@ -39,7 +48,7 @@ if __name__ == "__main__":
 
     # numbers grow really fast, so for values around (10^4, 10^4) wont work
     print('\n', 'sudan_mem2(1, 3000, 3000) = ', sudan_mem2(1, 3000, 3000), '\n\n')
-
+    print('\n', 'sudan3(1, 3000, 3000) = ', sudan3(1, 3000, 3000), '\n\n')
     # works with memoization
     # for n > 2 naive version will take too long
     tabliczka(0, 3, 0, 2, lambda x, y : sudan_mem2(2, x, y))
