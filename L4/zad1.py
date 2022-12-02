@@ -1,9 +1,6 @@
 from itertools import product
 
-
-
-
-def solve(op, s1, s2, res_string, allow_leading0 = False):
+def solve(s1, s2, res_string, allow_leading0 = False):
 
     nums = [i for i in range(0, 10)]
     letters = [letter for letter in set(s1+s2+res_string)]
@@ -29,16 +26,14 @@ def solve(op, s1, s2, res_string, allow_leading0 = False):
             yield f
             pass
 
-
-
 # works but takes a few minutes
 """ for res in solve(lambda x, y : x+y, "SEND", "MORE", "MONEY"):
     print(res) """
 #print all solutions
-for res in solve(lambda x, y : x+y, "KIOTO", "OSAKA", "TOKIO"):
+for res in solve( "KIOTO", "OSAKA", "TOKIO"):
     print(res, '\n')
 
 # get six solutions
-puzzle =  solve(lambda x, y : x+y, "TRZY", "TRZY", "SZEŚĆ")
+puzzle =  solve("TRZY", "TRZY", "SZEŚĆ")
 for i in range(10):
     print(next(puzzle), '\n')

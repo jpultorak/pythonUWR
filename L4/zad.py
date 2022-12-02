@@ -1,9 +1,6 @@
 from itertools import product
 
-
-
-
-def solve(op, s1, s2, res_string, allow_leading0 = False):
+def solve(s1, s2, res_string, allow_leading0 = False):
 
     nums = [i for i in range(0, 10)]
     letters = [letter for letter in set(s1+s2+res_string)]
@@ -28,8 +25,6 @@ def solve(op, s1, s2, res_string, allow_leading0 = False):
         if num1+num2 == res:
             yield f
             pass
-
-
 
 # works but takes a few minutes
 """ for res in solve(lambda x, y : x+y, "SEND", "MORE", "MONEY"):
