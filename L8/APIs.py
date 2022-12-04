@@ -1,14 +1,17 @@
 import requests
+import prywatne
 
 # for ids corresponding to breeds see function avaliable_breeds() below   
+# to use without api key, remove headers
 def get_cat_images(breeds = None):
     # use API key to authenticate (allows for more functionality)
-    headers = {'x-api-key' : 'live_khzRdWFsmB6FJHEXjouNJscoPbxiIIO453RAdSGNMtkaT4RM41TKQZeMw3Qrnoera'}
-    # for some reason limit is always either 1 or 10, no in betweens
+    headers = {'x-api-key' : prywatne.api_key}
     if breeds is not None:
         breeds = ','.join(breeds)
-
-    query_params = {"limit":5, 'breed_ids' : breeds}
+ 
+    # for some reason limit is always either 1 or 10, no in betweens
+    # seems to be bug on APIs' side
+    query_params = {"limit":10, 'breed_ids' : breeds}
 
     r = requests.get("https://api.thecatapi.com/v1/images/search", params=query_params, headers=headers) 
     data = r.json()
@@ -16,6 +19,7 @@ def get_cat_images(breeds = None):
         print(f"{id}: {d['url']}")
 
 # prints breed names and corresponding ids
+# no Api required
 def avaliable_breeds():
     all_breeds = requests.get("https://api.thecatapi.com/v1/breeds")
     breeds = all_breeds.json()
