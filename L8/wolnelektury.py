@@ -34,5 +34,5 @@ def pp(info):
         print('------------------------')
 
 if __name__ == '__main__':
-    a = scrape_writers(15)
+    a = scrape_writers(30)
     pp(a)
