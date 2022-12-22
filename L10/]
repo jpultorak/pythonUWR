@@ -1,0 +1,13 @@
+import numpy as np
+import matplotlib.pyplot as plt 
+
+N = 3 
+ON = 1
+OFF = 0
+vals = [ON, OFF]
+
+grid = np.random.choice(vals, N*N, p=[0.2, 0.8]).reshape(N, N)
+fig, ax = plt.subplots()
+
+mat = plt.matshow(grid)
+
